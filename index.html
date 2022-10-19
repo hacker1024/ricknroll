@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Loading...</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      button {
+        margin-right: 10px;
+        background: #34495e;
+        border-bottom: #2c3e50 3px solid;
+        border-left: #2c3e50 1px solid;
+        border-right: #2c3e50 1px solid;
+        border-radius: 6px;
+        text-align: center;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      button:active {
+        background: #2d3f51;
+        border-bottom: #2c3e50 1px solid;
+        border-left: #2c3e50 1px solid;
+        border-right: #2c3e50 1px solid;
+        border-radius: 6px;
+        text-align: center;
+        color: white;
+        padding: 10px;
+        margin-top: 3px;
+      }
+    </style>
+    <script>
+      function start() {
+        for (const element of document.getElementsByClassName(
+          "splashElement"
+        )) {
+          element.style.display = "none";
+        }
+
+        const params = new URLSearchParams(location.search);
+        const destination = params.get("dest");
+        const delay = (params.get("delay") ?? 2.25) * 1000;
+        const playerFrame = document.getElementById("playerFrame");
+        playerFrame.onload = () =>
+          setTimeout(
+            () =>
+              (location.href =
+                destination ?? "https://github.com/hacker1024/ricknroll"),
+            delay
+          );
+        playerFrame.src =
+          "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&amp;mute=0";
+        playerFrame.style.removeProperty("display");
+      }
+    </script>
+  </head>
+  <body>
+    <div
+      class="splashElement"
+      style="
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div style="text-align: center; padding: 0 24px">
+        <h1>Site protection by AnyProtect</h1>
+        <p>
+          This site employs DDoS protection by AnyProtect. Please wait while we
+          redirect you to the destination.
+        </p>
+        <button
+          onclick="start()"
+          style="margin-top: 24px; margin-bottom: 192px; visibility: hidden"
+          id="startButton"
+        >
+          Go to destination
+        </button>
+      </div>
+    </div>
+    <iframe
+      src="about:blank"
+      style="display: none"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+      id="playerFrame"
+    ></iframe>
+    <script>
+      setTimeout(
+        () =>
+          document
+            .getElementById("startButton")
+            .style.removeProperty("visibility"),
+        1200
+      );
+    </script>
+  </body>
+</html>
